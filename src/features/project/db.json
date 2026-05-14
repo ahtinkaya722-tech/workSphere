@@ -1,0 +1,40 @@
+{
+  "projects": [
+    {
+      "name": "Field Day Event ",
+      "status": "Planning",
+      "participant_Email": [
+        "ahtinkaya722@gmail.com",
+        "ahtinkayaahtinkaya85@gmail.com",
+        "barb56536@gmail.com",
+        "A@gmail.com",
+        "B@gmail.com",
+        "ahtinkayaahtinkaya85@gmail.com"
+      ],
+      "description": "The Field Day event is organized to promote teamwork, collaboration, and employee engagement through a variety of outdoor activities and team-based challenges. This event provides an opportunity for team members to connect, relax, and build stronger relationships outside the workplace.",
+      "tasks": "5",
+      "color": "#e51f1f",
+      "id": "FTwULZuXZ7c",
+      "links": [
+        {
+          "label": "Youtube ",
+          "url": "https://www.youtube.com/"
+        }
+      ]
+    },
+    {
+      "id": "YdaxNBCwQSg",
+      "name": "Employee Management",
+      "status": "In Progress",
+      "tasks": 4,
+      "color": "#00fbff",
+      "participant_Email": [
+        "ahtinkayaahtinkaya85@gmail.com",
+        "ahtinkaya722@gmail.com",
+        "barb56536@gmail.com",
+        "ahtin7c@gmail.com"
+      ]
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

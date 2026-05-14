@@ -1,0 +1,340 @@
+/* --- The Parent Container --- */
+.project-detail-wrapper {
+  position: relative;
+  width: 900px;
+  height: 600px; /* This is the 'frame' size */
+  background-color: #f8fafc; 
+  padding: 20px;
+  margin: 0px auto;
+  border-radius: 20px;
+
+  overflow: hidden; 
+}
+
+
+.project-detail-view {
+
+  position: relative; 
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  
+  /* FIXED: Set the height and tell it to scroll */
+  height: 100%; 
+  overflow-y: auto; 
+  overflow-x: hidden;
+  
+  /* This ensures padding doesn't push the card out of the 900px width */
+  box-sizing: border-box; 
+}
+
+/* --- Styled Internal Scrollbar --- */
+.project-detail-view::-webkit-scrollbar {
+  width: 6px;
+}
+.project-detail-view::-webkit-scrollbar-track {
+  background: transparent;
+}
+.project-detail-view::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+.project-detail-view::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+/* --- UI Elements --- */
+.btn-back {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stats-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.stat-pill {
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* --- Interactive Sections --- */
+.content-section {
+  margin-bottom: 32px;
+}
+
+.add-link-form, .invite-box {
+  display: flex;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.add-link-form input, .invite-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.add-link-form button, .invite-box button {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- Footer Actions --- */
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.btn-primary {
+  border: none;
+  color: white;
+}
+
+/* --- Scrollbar Customization --- */
+.project-detail-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.project-detail-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Container for the links */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive auto-fill  */
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Individual resource card styling */
+.resource-card {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb; /* Crisp 1px borders [cite: 196, 209] */
+  border-radius: 8px;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth SaaS transition [cite: 180, 312] */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle depth [cite: 173] */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hover "Lift" & Interaction feedback */
+.resource-card:hover {
+  transform: translateY(-2px); /* Micro-interaction lift  */
+  border-color: #2563eb; /* Highlight with SaaS Blue [cite: 269, 310] */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow on hover [cite: 248] */
+  color: #2563eb;
+}
+
+
+.links-grid p {
+  color: #6b7280;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.error-text {
+  width: 20%;             
+  color: #fff;
+  font-size: 13px;
+  margin: 10px auto;
+  background-color: red;
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.success-text {
+  width: 30%;             
+  color: #fff;
+  font-size: 13px;
+  margin: 10px auto;
+  background-color: rgb(1, 73, 255);
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+
+  padding: 8px;
+  border-radius: 6px;
+}
+/* Container for the entire description section */
+.description-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle depth */
+}
+
+.description-box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+/* Styling for the interactive paragraph */
+.project-description {
+  line-height: 1.6;
+  color: #4b5563;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  white-space: pre-wrap; /* Preserves line breaks from the textarea */
+}
+
+.project-description:hover {
+  background-color: #f9fafb; /* Light tint on hover to signal interactivity */
+}
+
+/* Editing state: The Textarea */
+.desc-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+  resize: vertical; /* Allows user to adjust height */
+  transition: all 0.2s ease;
+}
+
+.desc-input:focus {
+  outline: none;
+  border-color: #2563eb; /* SaaS Blue focus border */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); /* Soft glow focus ring */
+  background-color: #ffffff;
+}
+
+/* Button Group Layout */
+.desc-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Primary Save Button */
+.btn-save {
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.btn-save:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px); /* High-end "lift" feedback */
+}
+
+/* Muted Cancel Button */
+.btn-cancel {
+  padding: 8px 16px;
+  background-color: #ffffff;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #f9fafb;
+  color: #374151;
+  border-color: #d1d5db;
+}

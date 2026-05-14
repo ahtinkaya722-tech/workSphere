@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "id": "ScCi_6wOzrk",
+      "memberId": 1,
+      "title": "9-5",
+      "desc": "Video Edit ",
+      "dueDate": "2026-05-01",
+      "priority": "Low"
+    },
+    {
+      "id": "K05OzbDDIgI",
+      "title": "9 - 5",
+      "memberId": 1,
+      "desc": "Video Edit done",
+      "dueDate": "2026-05-01",
+      "priority": "High"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

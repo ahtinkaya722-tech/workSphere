@@ -1,0 +1,142 @@
+/* --- Main Dashboard Container --- */
+.dashboard {
+  display: flex;
+  height: calc(100vh - 70px); /* Adjust based on your header height */
+  background-color: #f8fafc; /* Muted workspace background */
+  overflow: hidden;
+}
+
+/* --- Left Sidebar Panel --- */
+.left-panel {
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.left-panel h3 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8; /* Muted labels */
+  letter-spacing: 0.05em;
+  margin: 20px 0 8px 12px;
+}
+
+/* Sidebar Member Items */
+.member-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+}
+
+.member-item:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.member-item.active {
+  background-color: #eff6ff; /* Soft blue background */
+  color: #2563eb; /* Brand Blue  */
+  font-weight: 600;
+}
+
+/* --- Content Panel Layout --- */
+.workspace-content {
+  flex: 1;
+  padding: 40px;
+  background-color: #f8fafc; /* Muted workspace background */
+  overflow-y: auto;
+}
+
+.member-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+/* --- Task Grid --- */
+.tasks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* --- Professional Task Card --- */
+.task-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0; /* Crisp 1px border */
+  border-radius: 12px;
+  padding: 24px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+/* Tactile Feedback (Consistent with Resource Cards) */
+.task-card:hover {
+  transform: translateY(-4px); /* Lift effect */
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+  border-color: #2563eb; /* Highlights in Brand Blue */
+}
+
+/* --- Card Components --- */
+.task-card-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Priority Color Mapping */
+.status-indicator.high { background: #ef4444; }
+.status-indicator.medium { background: #f59e0b; }
+.status-indicator.low { background: #10b981; }
+
+.task-meta-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.task-description-preview {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Maintains clean square layout */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Empty States --- */
+.empty-state {
+  display: flex;
+  height: 60%;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 15px;
+}

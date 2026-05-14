@@ -1,0 +1,559 @@
+/* --- Dashboard & Layout --- */
+.tasks-page {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.add-task-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- Task List Container --- */
+/* Container holds the rectangles together */
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Small gap between boxes */
+  padding: 10px;
+}
+
+/* The Main Rectangle Box */
+.task-rect-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0; /* Light crisp border */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  position: relative;
+  transition: all 0.2s ease;
+  /* Remove large rounding for a rectangle look */
+  border-radius: 6px; 
+}
+
+.task-rect-box:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+  transform: translateX(4px); /* Subtle shift right on hover */
+}
+
+/* The Color Strip (Priority Indicator) */
+.task-rect-box::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px; /* Thin accent line */
+  border-radius: 4px 0 0 4px;
+}
+
+.task-rect-box.high::before { background-color: #ef4444; }
+.task-rect-box.medium::before { background-color: #f59e0b; }
+.task-rect-box.low::before { background-color: #10b981; }
+
+/* Left Content Layout */
+.task-left-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.task-check-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-title-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.task-description-text {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+  color: #64748b; /* Muted color for description */
+  max-width: 450px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right Section Layout */
+.task-right-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.priority-text {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  width: 60px;
+  text-align: center;
+}
+
+.task-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.task-btn.edit { color: #2563eb; }
+.task-btn.edit:hover { background: #eff6ff; }
+
+.task-btn.delete { color: #dc2626; }
+.task-btn.delete:hover { background: #fef2f2; }
+/* Content Layout */
+.task-main-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.task-check {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.task-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-title-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.task-description-text {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+  max-width: 500px;
+}
+
+/* Right Side Meta */
+.task-right-meta {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.priority-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 60px;
+  text-align: right;
+}
+
+/* Buttons */
+.task-action-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon-btn, .delete-icon-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.edit-icon-btn { color: #2563eb; }
+.edit-icon-btn:hover { background: #dbeafe; }
+
+.delete-icon-btn { color: #dc2626; }
+.delete-icon-btn:hover { background: #fee2e2; }
+
+/* --- Priority Tags (Fixed width for alignment) --- */
+.priority-tag {
+  width: 90px;
+  padding: 4px 0;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  justify-self: center;
+}
+
+.priority-tag.high { background: #fee2e2; color: #dc2626; }
+.priority-tag.medium { background: #fef3c7; color: #d97706; }
+.priority-tag.low { background: #f3f4f6; color: #6b7280; }
+
+/* --- Action Buttons --- */
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: #006eff;
+  color: #2563eb;
+}
+
+.btn-danger {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+
+/* --- Full Screen Overlay --- */
+.model-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6); /* Deep slate with transparency */
+  backdrop-filter: blur(4px); /* Modern glassmorphism effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* --- The Modal Card --- */
+.modal-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 450px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-box h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+/* --- Form Elements --- */
+.modal-box input, 
+.modal-box select, 
+.modal-box textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0; /* Crisp 1px borders */
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.modal-box input:focus, 
+.modal-box select:focus, 
+.modal-box textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb; /* SaaS Primary Blue */
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); /* Soft focus ring */
+}
+
+.modal-box textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* --- Action Buttons --- */
+.modal-box button {
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+}
+
+.modal-box button:first-of-type {
+  background: #2563eb; /* Primary action */
+  color: white;
+  border: none;
+  margin-top: 8px;
+}
+
+.modal-box button:last-of-type {
+  background: white; /* Secondary/Cancel action */
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.modal-box button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px); /* High-end tactile feedback */
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* middle tasks */
+
+/* Container for all day columns */
+.daily-schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 20px;
+}
+
+.day-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+/* Grid of square boxes */
+.tasks-grid {
+  display: grid;
+  /* Adjust 200px to make squares larger or smaller */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* The Square Box */
+.task-square-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  height: 250px;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.task-square-box:hover {
+  transform: translateY(-4px); /* Same hover lift used in your topbar[cite: 349, 355] */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #2563eb; /* Primary SaaS Blue[cite: 321] */
+}
+
+/* Header inside square */
+.square-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.priority-dot.high { background: #ef4444; }
+.priority-dot.medium { background: #f59e0b; }
+.priority-dot.low { background: #10b981; }
+
+/* Content inside square */
+.square-content {
+  flex-grow: 1;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.task-title {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.task-desc-short {
+  font-size: 12px;
+  color: #64748b;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits description to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Bottom Actions */
+.square-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f8fafc;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.icon-btn:hover { color: #2563eb; }
+.icon-btn.delete:hover { color: #ef4444; }
+
+/* --- Overlay & Modal Box --- */
+.model-overlay, .edit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px); /* Premium frosted glass effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-box {
+  background: #ffffff;
+  width: 90%;
+  max-width: 440px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Consistent spacing between all inputs */
+}
+
+.modal-box h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+}
+
+/* --- Reshaping the Textarea & Inputs --- */
+.modal-box input, 
+.modal-box select, 
+.modal-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0; /* Crisp 1px border */
+  border-radius: 10px;
+  font-size: 14px;
+  background: #f8fafc;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* Specific shaping for the Textarea */
+.modal-textarea {
+  min-height: 120px; /* Gives enough room for descriptions */
+  resize: vertical;  /* Allows user to expand but not break width */
+  line-height: 1.5;
+  font-family: inherit; /* Ensures it matches the brand font */
+}
+
+/* Focus State (Consistent with Google Workspace style) */
+.modal-box input:focus, 
+.modal-box select:focus, 
+.modal-textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb; /* Brand Blue */
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); /* Soft glow */
+}
+
+/* --- Action Buttons --- */
+.modal-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Primary Create/Update Button */
+.modal-box button:first-of-type {
+  background: #2563eb;
+  color: white;
+  border: none;
+  margin-top: 10px;
+}
+
+.modal-box button:first-of-type:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px); /* Tactile lift effect [cite: 202, 248] */
+}
+
+/* Secondary Cancel Button */
+.modal-box button:last-of-type {
+  background: transparent;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.modal-box button:last-of-type:hover {
+  background: #f1f5f9;
+}

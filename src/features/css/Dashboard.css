@@ -1,0 +1,219 @@
+:root {
+  --sidebar-width: 260px;
+  --topbar-height: 64px;
+  --sidebar-bg: #1e1e1e; /* Dark SaaS Sidebar */
+  --sidebar-text: #9ca3af;
+  --bg-main: #ffffff;
+  --border-color: #f3f4f6;
+  --primary: #2563eb;
+}
+
+* { box-sizing: border-box; }
+
+.dashboard-container {
+  display: grid;
+  /* Sidebar is fixed width, the rest takes remaining space */
+  grid-template-columns: var(--sidebar-width) 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  padding-left: 8px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 3px; background: var(--primary); }
+
+/* Base style for all menu items [cite: 27] */
+.menu-item {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #9ca3af; /* Muted text [cite: 22] */
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: all 0.2s ease-in-out; /* Smooth transition effect [cite: 35] */
+  position: relative;
+}
+
+/* Hover effect for interactivity  */
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+/* The Active State when Projects is clicked [cite: 16] */
+.menu-item.active {
+  background: rgba(37, 99, 235, 0.15); /* Soft primary blue tint  */
+  color: #60a5fa; /* Brighter blue for the active label [cite: 16] */
+  font-weight: 500;
+}
+
+/* Optional: Add a vertical indicator bar like Notion/Slack */
+.menu-item.active::before {
+  content: "";
+  position: absolute;
+  left: -16px; /* Align to the edge of the sidebar */
+  top: 20%;
+  height: 60%;
+  width: 4px;
+  background-color: #2563eb; /* Primary Blue [cite: 7] */
+  border-radius: 0 4px 4px 0;
+}
+
+/* RIGHT WRAPPER */
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+}
+
+/* TOPBAR STYLES */
+.topbar {
+  height: var(--topbar-height);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: white;
+}
+
+.search-bar input {
+  background: #f3f4f6;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+}
+
+/* CONTENT STYLES */
+.content {
+  flex: 1;
+  overflow-y: auto; /* Only content scrolls, not sidebar or topbar */
+  padding: 32px;
+  background-color: #fcfcfd;
+}
+
+.content-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  height: 200px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Container alignment */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+}
+
+/* Notification Button Styling */
+.btn-notif {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280; /* Neutral gray */
+  transition: all 0.2s ease;
+}
+
+.btn-notif:hover {
+  background-color: #F3F4F6;
+  color: #111827;
+  transform: translateY(-1px);
+}
+
+/* Red Dot "Unread" Indicator */
+.btn-notif::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background-color: #EF4444; /* Alert red */
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+/* Avatar Styling */
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: white;
+  border-radius: 50%; /* Modern circular look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy feel */
+}
+
+.avatar:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
