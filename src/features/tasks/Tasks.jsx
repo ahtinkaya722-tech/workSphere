@@ -54,7 +54,7 @@ const Tasks = () => {
       const final_Task = {...current_Task,...updatedTask};
 
     try {
-      const res = await fetch(`http://localhost:4000/tasks/${editTask}`, {
+      const res = await fetch(`https://worksphere-h7y0.onrender.com/tasks/${editTask}`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const Tasks = () => {
     if (!confirmDelete) return;
 
     try {
-      await fetch(`http://localhost:4000/tasks/${task_id.id}`, {
+      await fetch(`https://worksphere-h7y0.onrender.com/tasks/${task_id.id}`, {
         method: 'DELETE',
       });
 
@@ -105,7 +105,7 @@ const Tasks = () => {
   useEffect(() => {
     const loadProjects = async () => {
       try {
-        const res = await fetch("http://localhost:4000/tasks");
+        const res = await fetch("https://worksphere-h7y0.onrender.com/tasks");
         const data = await res.json();
         const member_task= data.filter((d)=> d.memberId === Number(user.id) );
         setProjects(member_task);
@@ -141,7 +141,7 @@ const Tasks = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:4000/tasks', {
+      const res = await fetch('https://worksphere-h7y0.onrender.com/tasks', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

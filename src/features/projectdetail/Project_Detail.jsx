@@ -23,7 +23,7 @@ const [Message,setMessage]=useState({type:"",text:""});
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/projects/${id}`);
+        const res = await fetch(`https://worksphere-h7y0.onrender.com/projects/${id}`);
         const data = await res.json();
          setDesc(data.description || "");
         setLinks(data.links || []);
@@ -65,7 +65,7 @@ const addEmail = async () => {
   try {
     setLoadingEmail(true);
 
-    const res = await fetch("http://localhost:7000/invite", {
+    const res = await fetch("https://worksphere-h7y0.onrender.com/invite", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -94,13 +94,13 @@ const addEmail = async () => {
 };
 
     // setTimeout(async()=>{
-    //     const res =await fetch(`http://localhost:3000/projects/${id}`);
+    //     const res =await fetch(`https://worksphere-h7y0.onrender.com/projects/${id}`);
     //     const data= await res.json();
 
     //       const currentEmails = data.participant_Email || [];
     //     const updatedEmails = [...emails,email];
       
-    //     await fetch(`http://localhost:3000/projects/${id}`,{
+    //     await fetch(`https://worksphere-h7y0.onrender.com/projects/${id}`,{
     //   method:'PATCH',
     //   headers:{ 'Content-Type':'application/json',},
     //   body:JSON.stringify({participant_Email:updatedEmails}),
@@ -122,7 +122,7 @@ const addEmail = async () => {
 
 
     setTimeout(async()=>{
-        await fetch(`http://localhost:3000/projects/${id}`,{
+        await fetch(`https://worksphere-h7y0.onrender.com/projects/${id}`,{
       method:'PATCH',
       headers:{ 'Content-Type':'application/json',},
       body:JSON.stringify({links:updateLink}),
@@ -140,7 +140,7 @@ const addEmail = async () => {
 
 
   const saveDescription = async () => {
-  await fetch(`http://localhost:3000/projects/${id}`, {
+  await fetch(`https://worksphere-h7y0.onrender.com/projects/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ description: desc }),

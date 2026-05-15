@@ -62,7 +62,7 @@ if(success){
 
     const loadProjects = async () => {
       try {
-        const res = await fetch("http://localhost:3000/projects");
+        const res = await fetch("https://worksphere-h7y0.onrender.com/projects");
         const data = await res.json();
         const visible_Project= data.filter((d)=>
           
@@ -99,7 +99,7 @@ if(success){
       participant_Email: user.email
     };
 
-    const res = await fetch("http://localhost:3000/projects", {
+    const res = await fetch("https://worksphere-h7y0.onrender.com/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -120,7 +120,7 @@ if(success){
 
     }else if(mode === "edit"){
 
-        const res = await fetch(`http://localhost:3000/projects/${editId}`, {
+        const res = await fetch(`https://worksphere-h7y0.onrender.com/projects/${editId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

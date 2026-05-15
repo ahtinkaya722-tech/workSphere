@@ -5,7 +5,7 @@ export const addNewdata = async(userId,form)=>{
         email: form.email
       };
 
-      const res = await fetch(`http://localhost:5000/members/${userId}`,
+      const res = await fetch(`https://worksphere-h7y0.onrender.com/members/${userId}`,
        {method:"PATCH",
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(newdata),} 

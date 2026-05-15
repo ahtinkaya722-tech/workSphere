@@ -4,7 +4,7 @@ export const deleteProjectAPI= async (project_id)=>{
     if(!confirmDelete)return;
 
     try {
-           await fetch(`http://localhost:3000/projects/${project_id}`,{method:'DELETE',}); 
+           await fetch(`https://worksphere-h7y0.onrender.com/projects/${project_id}`,{method:'DELETE',}); 
         return true;
 
     } catch (error) {

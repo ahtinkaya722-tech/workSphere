@@ -86,7 +86,7 @@ app.get("/accept-invite", async (req, res) => {
     }
 
     if (invite.status !== "pending") {
-      return res.redirect(`http://localhost:5173/dashboard/project/${invite.projectId}`);
+      return res.redirect(`https://ahtinkaya722-tech.github.io/workSphere/dashboard/project/${invite.projectId}`);
     }
 
     if (Date.now() > invite.expiresAt) {
@@ -102,7 +102,7 @@ app.get("/accept-invite", async (req, res) => {
     await invite.save();
 
     res.send("Invite accepted! You are now added to the project.");
-    res.redirect(`http://localhost:5173/dashboard/project/${invite.projectId}`);
+    res.redirect(`https://ahtinkaya722-tech.github.io/workSphere/dashboard/project/${invite.projectId}`);
 
 
   } catch (error) {

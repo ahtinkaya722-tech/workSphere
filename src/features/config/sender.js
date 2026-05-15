@@ -11,7 +11,7 @@ export const sendInviteEmail = async ({ email, projectId }) => {
 
     const token = crypto.randomBytes(32).toString("hex");
 
-    const inviteLink = `http://localhost:7000/accept-invite?token=${token}`;
+    const inviteLink = `https://worksphere-h7y0.onrender.com/accept-invite?token=${token}`;
 
     invite = await Invite.create({
       email,

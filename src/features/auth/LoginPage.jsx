@@ -20,7 +20,7 @@ const LoginPage = () => {
 
         setTimeout( async() => {
             setLoading(false);
-            const res = await fetch("http://localhost:5000/members");
+            const res = await fetch("https://worksphere-h7y0.onrender.com/members");
             const users = await res.json();
 
             const user = users.find((u)=>u.email === form.email && u.password === form.password);

@@ -48,7 +48,7 @@ email: user.email
     try {
       const base64 = await resizeAvatar(file);
 
-      const res = await fetch(`http://localhost:5000/members/${user.id}`, {
+      const res = await fetch(`https://worksphere-h7y0.onrender.com/members/${user.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
