@@ -7,6 +7,10 @@ const Members_And_Tasks = () => {
     const [error,setError]=useState("");
     const [selected,setSelected]=useState('');
       const [tasks,setTasks]=useState([]);
+      const [showbox,setShowbox]=useState(false);
+      const [memberEmail,setMemberEmail]=useState('');
+      const [memberType,setMemberType]=useState('');
+      const [memberPassword,setMemberPassword]=useState('');
 
       const {search}= useOutletContext();
 
@@ -32,7 +36,36 @@ const Members_And_Tasks = () => {
 
     },[]) 
 
- 
+    const addMember = async()=> {
+
+      try {
+          const lastMember = memberEmail.length-1;
+         const newMemberId= lastMember ? Number(lastMember.id)+1 :1 ;
+          const newMember = {
+            id:String(newMemberId),
+            email: memberEmail,
+            password:memberPassword,
+            nickname:"undefined nickname",
+           role: memberType
+
+
+          };
+
+     
+    const res=      await fetch("http://localhost:5000/members",{method:"POST",
+            headers:{ "Content-type":"application/json",},
+              body:JSON.stringify(newMember),
+
+          })
+
+          const reloadMembers = await res.json();
+          console.log("Member Added");
+          setMembers(reloadMembers);
+      } catch (error) {
+          console.error(error);
+      }
+
+    }
 
 const member_Task = tasks.filter((t)=> 
     Number( t.memberId)
@@ -77,6 +110,8 @@ const cs = displayMembers?.filter((m) => m.role === "cs") || [];
       
     </div>
    <div className="workspace-content">
+    <button className='btn btn-primary' onClick={()=>setShowbox(true)} >Add Member</button>
+
   {!selected ? (
     <div className="empty-state">
       <p>Select a member to view tasks</p>
@@ -111,6 +146,52 @@ const cs = displayMembers?.filter((m) => m.role === "cs") || [];
       )}
     </>
   )}
+
+ {showbox && (
+  <div className="member-model">
+    <div className="member-box">
+      <h3>Add Member</h3>
+      
+      <div className="input-group">
+        <input 
+          type="text" 
+          placeholder='Email' 
+          value={memberEmail} 
+          onChange={(e)=>setMemberEmail(e.target.value)}
+        />
+        <input 
+          type="password" 
+          placeholder='Password' 
+          value={memberPassword} 
+          onChange={(e)=>setMemberPassword(e.target.value)}
+        />
+        <select 
+          className="member-select" 
+          name="memberType" 
+          onChange={(e)=>setMemberType(e.target.value)}
+        >
+          <option value="" disabled selected>Select Role</option>
+          <option value="sensei">Sensei</option>
+          <option value="admin">Admin</option>
+          <option value="media">Media</option>
+          <option value="cs">CS</option>
+        </select>
+      </div>
+
+      <div className="modal-actions">
+        <button className="btn-add-member" onClick={addMember}>
+          Add Member
+        </button>
+        <button className="btn-cancel-member" onClick={() => setShowBox(false)}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
 </div>
 
   </div>

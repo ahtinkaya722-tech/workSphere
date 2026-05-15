@@ -105,6 +105,13 @@
       "password": "Admin123!",
       "nickname": "Zin Mar",
       "role": "admin"
+    },
+    {
+      "id": "6gcMNmf8P9k",
+      "email": "ahtin77c@gmail.com",
+      "password": "Ahtin09500!",
+      "nickname": "undefined nickname",
+      "role": "media"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
